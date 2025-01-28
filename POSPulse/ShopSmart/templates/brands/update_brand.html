@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Brand</title>
+</head>
+<body>
+    <h1>Update Brand</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ brand.name }}" required><br>
+        <label for="logo">Logo:</label>
+        <input type="file" name="logo"><br>
+        <button type="submit">Save Changes</button>
+    </form>
+    <p><a href="{% url 'brand_list' %}">Back to Brand List</a></p>
+</body>
+</html>

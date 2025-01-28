@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ mobile.name }} - Details</title>
+</head>
+<body>
+    <h1>{{ mobile.name }}</h1>
+    <p><strong>Brand:</strong> {{ mobile.brand.name }}</p>
+    <p><strong>Price:</strong> ${{ mobile.price }}</p>
+    {% if mobile.image %}
+        <img src="{{ mobile.image.url }}" alt="{{ mobile.name }} image" width="200">
+    {% endif %}
+    <h2>Specifications</h2>
+    {% if mobile.specifications %}
+        <ul>
+            <li><strong>Processor:</strong> {{ mobile.specifications.processor }}</li>
+            <li><strong>RAM:</strong> {{ mobile.specifications.ram }} GB</li>
+            <li><strong>Storage:</strong> {{ mobile.specifications.storage }}</li>
+            <li><strong>Battery:</strong> {{ mobile.specifications.battery }} mAh</li>
+            <li><strong>Screen Size:</strong> {{ mobile.specifications.screen_size }} inches</li>
+            <li><strong>Camera:</strong> {{ mobile.specifications.camera }}</li>
+            <li><strong>OS:</strong> {{ mobile.specifications.os }}</li>
+        </ul>
+    {% else %}
+        <p>No specifications available for this mobile.</p>
+    {% endif %}
+    <a href="{% url 'mobile_list' %}">Back to Mobile List</a>
+</body>
+</html>

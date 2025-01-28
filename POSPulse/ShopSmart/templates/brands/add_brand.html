@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Brand</title>
+</head>
+<body>
+    <h1>Add New Brand</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="logo">Logo:</label>
+        <input type="file" name="logo"><br>
+        <button type="submit">Save</button>
+    </form>
+    <p><a href="{% url 'brand_list' %}">Back to Brand List</a></p>
+</body>
+</html>

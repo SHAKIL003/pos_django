@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brand List</title>
+</head>
+<body>
+    <h1>Brand List</h1>
+    <a href="{% url 'add_brand' %}">Add New Brand</a>
+    <ul>
+        {% for brand in brands %}
+            <li>
+                <strong>{{ brand.name }}</strong> 
+                {% if brand.logo %}
+                    <img src="{{ brand.logo.url }}" alt="{{ brand.name }} logo" width="50">
+                {% endif %}
+                <a href="{% url 'brand_detail' brand.id %}">Details</a>
+                <a href="{% url 'update_brand' brand.id %}">Edit</a>
+                <a href="{% url 'delete_brand' brand.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

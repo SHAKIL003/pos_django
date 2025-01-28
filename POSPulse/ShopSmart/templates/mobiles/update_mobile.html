@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Mobile</title>
+</head>
+<body>
+    <h1>Update Mobile</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="{{ mobile.name }}" required><br>
+
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" value="{{ mobile.price }}" required><br>
+
+        <label for="brand">Brand:</label>
+        <select name="brand" id="brand">
+            {% for brand in brands %}
+                <option value="{{ brand.id }}" {% if mobile.brand.id == brand.id %}selected{% endif %}>
+                    {{ brand.name }}
+                </option>
+            {% endfor %}
+        </select><br>
+
+        <label for="image">Image:</label>
+        <input type="file" name="image" id="image"><br>
+
+        <button type="submit">Update Mobile</button>
+    </form>
+    <a href="{% url 'mobile_detail' mobile.id %}">Cancel</a>
+</body>
+</html>

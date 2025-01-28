@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Mobile</title>
+</head>
+<body>
+    <h1>Add New Mobile</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" required><br>
+        <label for="brand">Brand:</label>
+        <select name="brand">
+            {% for brand in brands %}
+                <option value="{{ brand.id }}">{{ brand.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="image">Image:</label>
+        <input type="file" name="image"><br>
+        <button type="submit">Save</button>
+    </form>
+    <p><a href="{% url 'mobile_list' %}">Back to Mobile List</a></p>
+</body>
+</html>

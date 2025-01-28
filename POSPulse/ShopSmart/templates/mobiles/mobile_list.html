@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile List</title>
+</head>
+<body>
+    <h1>Mobile List</h1>
+    <a href="{% url 'add_mobile' %}">Add New Mobile</a>
+    <ul>
+        {% for mobile in mobiles %}
+            <li>
+                <strong>{{ mobile.name }}</strong> ({{ mobile.brand.name }}) - ${{ mobile.price }}
+                {% if mobile.image %}
+                    <img src="{{ mobile.image.url }}" alt="{{ mobile.name }} image" width="50">
+                {% endif %}
+                <a href="{% url 'mobile_detail' mobile.id %}">Details</a>
+                <a href="{% url 'update_mobile' mobile.id %}">Edit</a>
+                <a href="{% url 'delete_mobile' mobile.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

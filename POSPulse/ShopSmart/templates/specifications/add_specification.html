@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Specifications</title>
+</head>
+<body>
+    <h1>Add Specifications for "{{ mobile.name }}"</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="processor">Processor:</label>
+        <input type="text" name="processor" required><br>
+        <label for="ram">RAM (GB):</label>
+        <input type="number" name="ram" required><br>
+        <label for="storage">Storage:</label>
+        <input type="text" name="storage" required><br>
+        <label for="battery">Battery (mAh):</label>
+        <input type="number" name="battery" required><br>
+        <label for="screen_size">Screen Size (inches):</label>
+        <input type="number" name="screen_size" step="0.1" required><br>
+        <label for="camera">Camera:</label>
+        <input type="text" name="camera" required><br>
+        <label for="os">Operating System:</label>
+        <input type="text" name="os" required><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

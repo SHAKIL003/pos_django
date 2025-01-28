@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brand Details</title>
+</head>
+<body>
+    <h1>{{ brand.name }}</h1>
+    {% if brand.logo %}
+        <img src="{{ brand.logo.url }}" alt="{{ brand.name }} logo" width="200">
+    {% endif %}
+    <p><a href="{% url 'brand_list' %}">Back to Brand List</a></p>
+</body>
+</html>
