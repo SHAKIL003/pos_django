@@ -1,11 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Brand, Mobile, Specification
 from django.http import HttpResponse
+# from django.http import JsonResponse
+
 
 # Brand Views
 def brand_list(request):
     brands = Brand.objects.all()
     return render(request, 'brands/brand_list.html', {'brands': brands})
+
+# This is for testing On POSTMAN
+# def brand_list(request):
+#     brands = Brand.objects.all().values('id', 'name', 'logo')
+#     return JsonResponse(list(brands), safe=False)
 
 def brand_detail(request, brand_id):
     brand = get_object_or_404(Brand, id=brand_id)

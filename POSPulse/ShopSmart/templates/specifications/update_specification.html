@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Specifications</title>
+</head>
+<body>
+    <h1>Update Specifications for "{{ specification.mobile.name }}"</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="processor">Processor:</label>
+        <input type="text" name="processor" value="{{ specification.processor }}" required><br>
+
+        <label for="ram">RAM (GB):</label>
+        <input type="number" name="ram" value="{{ specification.ram }}" required><br>
+
+        <label for="storage">Storage:</label>
+        <input type="text" name="storage" value="{{ specification.storage }}" required><br>
+
+        <label for="battery">Battery (mAh):</label>
+        <input type="number" name="battery" value="{{ specification.battery }}" required><br>
+
+        <label for="screen_size">Screen Size (inches):</label>
+        <input type="number" name="screen_size" step="0.1" value="{{ specification.screen_size }}" required><br>
+
+        <label for="camera">Camera:</label>
+        <input type="text" name="camera" value="{{ specification.camera }}" required><br>
+
+        <label for="os">Operating System:</label>
+        <input type="text" name="os" value="{{ specification.os }}" required><br>
+
+        <button type="submit">Update</button>
+        <a href="{% url 'mobile_detail' specification.mobile.id %}">Cancel</a>
+    </form>
+</body>
+</html>

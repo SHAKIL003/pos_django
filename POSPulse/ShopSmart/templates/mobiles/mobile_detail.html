@@ -7,9 +7,11 @@
     <h1>{{ mobile.name }}</h1>
     <p><strong>Brand:</strong> {{ mobile.brand.name }}</p>
     <p><strong>Price:</strong> ${{ mobile.price }}</p>
+    
     {% if mobile.image %}
         <img src="{{ mobile.image.url }}" alt="{{ mobile.name }} image" width="200">
     {% endif %}
+    
     <h2>Specifications</h2>
     {% if mobile.specifications %}
         <ul>
@@ -21,9 +23,15 @@
             <li><strong>Camera:</strong> {{ mobile.specifications.camera }}</li>
             <li><strong>OS:</strong> {{ mobile.specifications.os }}</li>
         </ul>
+        <!-- Add Edit and Delete options -->
+        <a href="{% url 'update_specification' mobile.specifications.id %}">Edit Specifications</a> |
+        <a href="{% url 'delete_specification' mobile.specifications.id %}">Delete Specifications</a>
     {% else %}
         <p>No specifications available for this mobile.</p>
+        <a href="{% url 'add_specification' mobile.id %}">Add Specifications</a>
     {% endif %}
+    
+    <br>
     <a href="{% url 'mobile_list' %}">Back to Mobile List</a>
 </body>
 </html>
